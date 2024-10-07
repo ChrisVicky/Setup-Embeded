@@ -1,5 +1,7 @@
-source ./setup-zsh.sh
-source ./setup-binary.sh
+#!/bin/bash
+PWD=$(pwd)
+source ${PWD}/setup-zsh.sh
+source ${PWD}/setup-binary.sh
 
 install_basic() {
   echo "Install Basic Dev Tools"
