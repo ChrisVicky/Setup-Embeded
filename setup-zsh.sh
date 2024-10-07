@@ -1,3 +1,5 @@
+ZSHRC=${pwd}/.zshrc
+
 install_oh_my_zsh_wget() {
   sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
 }
@@ -32,6 +34,6 @@ install_zsh_plugins() {
 setup_zsh() {
   ([ -d ~/.oh-my-zsh ] && echo "OH-My-ZSH already installed") ||
     (install_oh_my_zsh_curl || install_oh_my_zsh_wget) || (echo "INSTALL OH-My-ZSH with wget ERROR" && exit 1) &&
-    cp $(pwd)/.zshrc ~/.zshrc &&
+    cp ${ZSHRC} ~/.zshrc &&
     install_zsh_plugins || (echo "INSTALL zsh Plugin ERROR" && exit 1)
 }
