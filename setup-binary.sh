@@ -1,8 +1,9 @@
 BINDIR=${HOME}/.local/bin
-TMP=${HOME}/.tmp
+TMP=${PWD}/.tmp
 
 pre_setup_binary() {
-  mkdir ${BINDIR}
+  [ -d ${BINDIR} ] ||
+    mkdir ${BINDIR}
   mkdir ${TMP}
 }
 
