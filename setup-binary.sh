@@ -4,6 +4,8 @@ TMP=${PWD}/.tmp
 pre_setup_binary() {
   [ -d ${BINDIR} ] ||
     mkdir ${BINDIR}
+
+  [ -d ${TMP} ] && rm -rf ${TMP}
   mkdir ${TMP}
 }
 
