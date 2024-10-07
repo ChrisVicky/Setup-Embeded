@@ -1,5 +1,6 @@
 BINDIR=${HOME}/.local/bin
 TMP=${PWD}/.tmp
+WD=$(pwd)
 
 pre_setup_binary() {
   [ -d ${BINDIR} ] ||
@@ -18,6 +19,7 @@ install_lazygit() {
         tar -xvf lazygit_0.44.1_Linux_arm64.tar.gz &&
         mv lazygit ${BINDIR}
     )
+  cd ${WD}
 }
 
 install_lazydocker() {
@@ -29,6 +31,7 @@ install_lazydocker() {
         tar -xvf lazydocker_0.23.3_Linux_arm64.tar.gz &&
         mv lazydocker ${BINDIR}
     )
+  cd ${WD}
 }
 
 install_zellij() {
@@ -40,6 +43,7 @@ install_zellij() {
         tar -xvf zellij-aarch64-unknown-linux-musl.tar.gz &&
         mv zellij ${BINDIR}
     )
+  cd ${WD}
 }
 
 post_setup_binary() {
