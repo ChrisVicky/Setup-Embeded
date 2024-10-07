@@ -33,7 +33,9 @@ install_zsh_plugins() {
 
 setup_zsh() {
   ([ -d ~/.oh-my-zsh ] && echo "OH-My-ZSH already installed") ||
-    (install_oh_my_zsh_curl || install_oh_my_zsh_wget) || (echo "INSTALL OH-My-ZSH with wget ERROR" && exit 1) &&
-    cp ${ZSHRC} ~/.zshrc &&
+    (
+      install_oh_my_zsh_curl || install_oh_my_zsh_wget || (echo "INSTALL OH-My-ZSH with wget ERROR" && exit 1) &&
+        [ -f ~/.zshrc ] && mv ~/.zshrc ~/.zshrc.bak && cp ${ZSHRC} ~/.zshrc
+    ) &&
     install_zsh_plugins || (echo "INSTALL zsh Plugin ERROR" && exit 1)
 }
