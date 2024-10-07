@@ -1,4 +1,4 @@
-ZSHRC=${pwd}/.zshrc
+ZSHRC=$(pwd)/.zshrc
 
 install_oh_my_zsh_wget() {
   sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
