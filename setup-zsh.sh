@@ -1,44 +1,37 @@
 install_oh_my_zsh_wget(){
-	sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
+  sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
 }
 
 install_oh_my_zsh_curl(){
-	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 }
 
 # with oh-my-zsh
 install_zsh_plugins(){ 
-	# zsh-autosuggestions 
-	echo "Install zsh-autosuggestions"
-	git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+  # zsh-autosuggestions 
+  echo "Install zsh-autosuggestions"
+  git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
-	# zsh-syntax-highlighting 
-	echo "Install zsh-syntax-highlighting"
-	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+  # zsh-syntax-highlighting 
+  echo "Install zsh-syntax-highlighting"
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
-	# zsh-completions
-	echo "Install zsh-completions"
-	git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions
+  # zsh-completions
+  echo "Install zsh-completions"
+  git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions
 
-	# powerlevel10k
-	echo "Install powerlevel10k"
-	git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+  # powerlevel10k
+  echo "Install powerlevel10k"
+  git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 }
 
-install_basic(){
-	echo "Install Basic Dev Tools"
-	echo "sudo apt-get install zsh wget curl git -y"
-	sudo apt-get install zsh wget curl git -y
+setup_zsh(){
+  install_oh_my_zsh_curl() || install_oh_my_zsh_wget() || echo "INSTALL OH-My-ZSH with wget ERROR" && exit 1
+
+  cp ./.zshrc ~/.zshrc
+
+  install_zsh_plugins() || echo "INSTALL zsh Plugin ERROR" && exit 1
+
+  # Test zsh
+  zsh
 }
-
-install_basic() || echo "INSTALL BASIC ERROR" && exit 1
-install_oh_my_zsh_curl() || install_oh_my_zsh_wget() || echo "INSTALL OH-My-ZSH with wget ERROR" && exit 1
-
-cp ./.zshrc ~/.zshrc
-
-install_zsh_plugins() || echo "INSTALL zsh Plugin ERROR" && exit 1
-
-# Test zsh
-zsh
-
-# TODO: Setup Static IP
