@@ -26,10 +26,11 @@ install_zsh_plugins() {
 }
 
 setup_zsh() {
-  install_oh_my_zsh_curl || install_oh_my_zsh_wget || echo "INSTALL OH-My-ZSH with wget ERROR" && exit 1
+  install_oh_my_zsh_curl || install_oh_my_zsh_wget || (echo "INSTALL OH-My-ZSH with wget ERROR" && exit 1)
+
   cp ./.zshrc ~/.zshrc
 
-  install_zsh_plugins || echo "INSTALL zsh Plugin ERROR" && exit 1
+  install_zsh_plugins || (echo "INSTALL zsh Plugin ERROR" && exit 1)
 
   # Test zsh
   zsh

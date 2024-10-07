@@ -9,6 +9,6 @@ install_basic() {
   sudo apt-get install zsh wget curl git -y
 }
 
-install_basic || echo "INSTALL BASIC ERROR" && exit 1
-setup_binray || echo "INSTALL BINARY ERROR" && exit 1
-setup_zsh || echo "INSTALL ZSH ERROR" && exit 1
+install_basic || (echo "INSTALL BASIC ERROR" && exit 1)
+setup_binary || (echo "INSTALL BINARY ERROR" && exit 1)
+setup_zsh || (echo "INSTALL ZSH ERROR" && exit 1)

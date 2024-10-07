@@ -33,11 +33,10 @@ install_zellij() {
 post_setup_binary() {
   rm -rf ${TMP}
 }
-
-install_binary() {
-  pre_setup_binary || echo "PRE-SETUP ERROR" && exit 1
-  install_lazygit || echo "INSTALL lazygit ERROR" && exit 1
-  install_lazydocker || echo "INSTALL lazydocker ERROR" && exit 1
-  install_zellij || echo "INSTALL zellij ERROR" && exit 1
-  post_setup_binary || echo "POST-SETUP ERROR" && exit 1
+setup_binary() {
+  pre_setup_binary || (echo "PRE-SETUP ERROR" && exit 1)
+  install_lazygit || (echo "INSTALL lazygit ERROR" && exit 1)
+  install_lazydocker || (echo "INSTALL lazydocker ERROR" && exit 1)
+  install_zellij || (echo "INSTALL zellij ERROR" && exit 1)
+  post_setup_binary || (echo "POST-SETUP ERROR" && exit 1)
 }
