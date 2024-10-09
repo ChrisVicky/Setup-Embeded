@@ -15,8 +15,8 @@ install_lazygit() {
   cd ${TMP}
   [ -f ${BINDIR}/lazygit ] ||
     (
-      wget https://github.com/jesseduffield/lazygit/releases/download/v0.44.1/lazygit_0.44.1_Linux_arm64.tar.gz &&
-        tar -xvf lazygit_0.44.1_Linux_arm64.tar.gz &&
+      wget https://github.com/jesseduffield/lazygit/releases/download/v0.44.1/lazygit_0.44.1_Linux_32-bit.tar.gz &&
+        tar -xvf lazygit_0.44.1_Linux_32-bit.tar.gz &&
         mv lazygit ${BINDIR}
     )
 }
@@ -26,8 +26,8 @@ install_lazydocker() {
   cd ${TMP}
   [ -f ${BINDIR}/lazydocker ] ||
     (
-      wget https://github.com/jesseduffield/lazydocker/releases/download/v0.23.3/lazydocker_0.23.3_Linux_arm64.tar.gz &&
-        tar -xvf lazydocker_0.23.3_Linux_arm64.tar.gz &&
+      wget https://github.com/jesseduffield/lazydocker/releases/download/v0.23.3/lazydocker_0.23.3_Linux_x86_64.tar.gz &&
+        tar -xvf lazydocker_0.23.3_Linux_x86_64.tar.gz &&
         mv lazydocker ${BINDIR}
     )
 }
@@ -37,8 +37,8 @@ install_zellij() {
   cd ${TMP}
   [ -f ${BINDIR}/zellij ] ||
     (
-      wget https://github.com/zellij-org/zellij/releases/download/v0.40.1/zellij-aarch64-unknown-linux-musl.tar.gz &&
-        tar -xvf zellij-aarch64-unknown-linux-musl.tar.gz &&
+      wget https://github.com/zellij-org/zellij/releases/download/v0.40.1/zellij-x86_64-unknown-linux-musl.tar.gz &&
+        tar -xvf zellij-x86_64-unknown-linux-musl.tar.gz &&
         mv zellij ${BINDIR}
     )
 }
