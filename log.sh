@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Log file location
-LOG_FILE="/path/to/your/logfile.log"
+LOG_FILE=$(pwd)/log.txt
 
 # ANSI color codes
 RESET_COLOR="\033[0m"
