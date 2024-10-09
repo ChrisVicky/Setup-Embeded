@@ -1,4 +1,4 @@
-BINDIR=${HOME}/.local/bin
+BINDIR=${HOME}/.local/bin/
 TMP=${PWD}/.tmp
 WD=$(pwd)
 
@@ -11,7 +11,7 @@ pre_setup_binary() {
 }
 
 install_lazygit() {
-  echo "Install lazygit"
+  info "Install lazygit"
   cd ${TMP}
   [ -f ${BINDIR}/lazygit ] ||
     (
@@ -19,11 +19,10 @@ install_lazygit() {
         tar -xvf lazygit_0.44.1_Linux_arm64.tar.gz &&
         mv lazygit ${BINDIR}
     )
-  cd ${WD}
 }
 
 install_lazydocker() {
-  echo "Install lazydocker"
+  info "Install lazydocker"
   cd ${TMP}
   [ -f ${BINDIR}/lazydocker ] ||
     (
@@ -31,11 +30,10 @@ install_lazydocker() {
         tar -xvf lazydocker_0.23.3_Linux_arm64.tar.gz &&
         mv lazydocker ${BINDIR}
     )
-  cd ${WD}
 }
 
 install_zellij() {
-  echo "Install zellij"
+  info "Install zellij"
   cd ${TMP}
   [ -f ${BINDIR}/zellij ] ||
     (
@@ -43,16 +41,16 @@ install_zellij() {
         tar -xvf zellij-aarch64-unknown-linux-musl.tar.gz &&
         mv zellij ${BINDIR}
     )
-  cd ${WD}
 }
 
 post_setup_binary() {
   rm -rf ${TMP}
+  cd ${WD}
 }
 setup_binary() {
-  pre_setup_binary || (echo "PRE-SETUP ERROR" && exit 1) &&
-    install_lazygit || (echo "INSTALL lazygit ERROR" && exit 1) &&
-    install_lazydocker || (echo "INSTALL lazydocker ERROR" && exit 1) &&
-    install_zellij || (echo "INSTALL zellij ERROR" && exit 1) &&
-    post_setup_binary || (echo "POST-SETUP ERROR" && exit 1)
+  pre_setup_binary || (error "PRE-SETUP ERROR" && exit 1) &&
+    install_lazygit || (error "INSTALL lazygit ERROR" && exit 1) &&
+    install_lazydocker || (error "INSTALL lazydocker ERROR" && exit 1) &&
+    install_zellij || (error "INSTALL zellij ERROR" && exit 1) &&
+    post_setup_binary || (error "POST-SETUP ERROR" && exit 1)
 }
