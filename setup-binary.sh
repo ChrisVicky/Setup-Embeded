@@ -54,7 +54,7 @@ install_zellij() {
   cd ${TMP}
   case ${ARCH} in
   aarch64)
-    pkg="zellij-x86_64-unknown-linux-musl.tar.gz"
+    pkg="zellij-aarch64-unknown-linux-musl.tar.gz"
     ;;
   *)
     pkg="zellij-x86_64-unknown-linux-musl.tar.gz"
